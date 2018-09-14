@@ -12,7 +12,7 @@ var exec = require('child_process').exec;
 
 
 var initDevices = function(socket, firstInit = false, emit = false){
-	exec("aconnect -l | grep client > "+__dirname+"midi_devices.txt", function (error, stdout, stderr) { 
+	exec("aconnect -l | grep client > "+__dirname+"/midi_devices.txt", function (error, stdout, stderr) { 
 		
 		var devices = [];
 		
@@ -122,8 +122,12 @@ io.on('connection', function(socket){
 
 });
   
-http.listen(3000, function () {       
-  console.log('Server started. Listening on *:3000');
+http.listen(3000, function () {   
+  exec("hostname -I", function (error, stdout, stderr){
+	var ip = stdout.slice(0, -2);
+  	
+  	console.log('Server started. Listening on http://'+ip+':3000');
+  });    
 });
 
 

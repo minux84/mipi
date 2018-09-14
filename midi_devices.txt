@@ -1,5 +1,0 @@
-client 0: 'System' [type=kernel]
-client 14: 'Midi Through' [type=kernel]
-client 20: 'Studiologic numaconcert' [type=kernel,card=1]
-client 24: 'electribe2 sampler' [type=kernel,card=2]
-client 28: 'Blofeld' [type=kernel,card=3]

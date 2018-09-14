@@ -1,19 +1,20 @@
 var socket = null;
 
 $(function () {
-    socket = io('http://192.168.1.111:3000');
+	
+    socket = io('http://'+window.location.hostname+':3000');
 	
 	socket.emit('init');
 	
 	socket.on('devices', function(data){				
-		buildList(".devices-list", data);
+		buildList('.devices-list', data);
 		initList();
 	});
 	
 	socket.on('restoreState', function(data){
 
-		buildList(".devices-out",data.device_out);
-		buildList(".devices-in",data.device_in);
+		buildList('.devices-out',data.device_out);
+		buildList('.devices-in',data.device_in);
 		initList();
 	});
 
