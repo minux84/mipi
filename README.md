@@ -25,6 +25,9 @@ $ node mipi
 
 You should view ```Server started. Listening on http://YOUR_IP:3000``` now open your favourite browser and connect to your Raspberry :) 
 
+On your browser you should see something like this:
+!(https://github.com/minux84/mipi/blob/master/screenshot.png?raw=true)
+
 If you want to start miPI at boot, edit ```/etc/rc.local``` file and add this line
 ```sh
 node $HOME/mipi/mipi.js &
