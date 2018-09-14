@@ -11,6 +11,7 @@ $ sudo apt-get install alsa-utils
 
 Clone repository 
 ```sh
+$ cd $HOME
 $ git clone https://github.com/minux84/mipi.git
 ```
 
