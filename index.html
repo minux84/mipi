@@ -1,0 +1,48 @@
+<html>
+    <head>
+	    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <script src="/static/socket.io.js"></script>
+        <script src="/static/jquery-1.11.1.js"></script>
+        <link rel="stylesheet" href="/static/bootstrap.min.css" >
+        <script src="/static/bootstrap.min.js" ></script>        
+        <script src="/static/sortable.min.js"></script>
+        <script src="/static/script.js"></script>
+        <style>
+
+			ol.devices.devices-out, ol.devices.devices-in{
+				min-height:200px;
+				border-radius:3px;
+				background-color:rgba(235, 235, 235, 1);
+			}
+			
+			ol.devices.devices-out li{
+				background-color: #04b5e1;
+				color: white;
+			}
+			
+			ol.devices.devices-in li{
+				background-color: #04e15c;
+				color: white;
+			}
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid text-center" style="padding:20px;">
+	        
+	        <div class="row" id="list-container">
+		        <div class="col-xs-4">
+			         <h4>DEVICES</h4>
+					 <ol id="devices-list" class='devices devices-list list-group'></ol>     
+		        </div>
+		        <div class="col-xs-4">
+			         <h4>SEND</h4>
+					 <ol id="devices-out" class='devices devices-out list-group'></ol>     
+		        </div>
+		        <div class="col-xs-4">
+			         <h4>RECEIVE</h4>
+					 <ol id="devices-in" class='devices devices-in list-group'></ol>     
+		        </div>		        
+	        </div>          
+        </div>         
+    </body>
+</html>
