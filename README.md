@@ -19,7 +19,7 @@ Install the dependencies and start the server.
 ```sh
 $ cd mipi
 $ npm install
-$ node server
+$ node mipi
 ```
 
 You should view ```Server started. Listening on http://YOUR_IP:3000``` now open your favourite browser and connect to your Raspberry :) 
