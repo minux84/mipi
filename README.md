@@ -4,9 +4,9 @@ miPI let you to interconnect multiple midi devices to a Raspberry PI and use it 
 
 ### Installation
 
-Install alsa-utils via apt-get
+Install ```alsa-utils``` ```nodejs``` and ```npm``` via apt-get
 ```sh
-$ sudo apt-get install alsa-utils
+$ sudo apt-get install alsa-utils nodejs npm -y
 ```
 
 Clone repository 
