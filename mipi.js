@@ -23,7 +23,7 @@ var initDevices = function(socket, firstInit = false, emit = false){
 		
 		var i = 0;
 		rl.on('line', (line) => {
-			if(i > 1){
+			if(i > 1){ //skip first two system devices
 				devices.push({
 					"val":line.split(" ")[1],
 					"label":line.split("'")[1]	
@@ -45,27 +45,14 @@ var initDevices = function(socket, firstInit = false, emit = false){
 				});  
 				
 				rl.on('line', (line) => {
-					exec(line, null);
+					if(line.length > 0)
+						exec(line, null);
 				}); 				
 			}
 			
 		});	
 		
 	});
-	
-	//restoreData(socket);			
-
-};
-
-var restoreData = function(socket){
-	
-	if(fs.existsSync(__dirname +'savedState.json')){
-		var savedState = JSON.parse(fs.readFileSync('savedState.json', 'utf8'));
-		
-		if(savedState){
-			socket.emit('restoreState', savedState);
-		}				
-	}
 	
 };
 
@@ -118,6 +105,12 @@ io.on('connection', function(socket){
 	
 	socket.on('resetMidi', function(){
 		exec("aconnect -x");
+	});
+
+	socket.on('resetConnections', function(){
+		exec("aconnect -x");
+		fs.writeFileSync(__dirname+'/savedState.json', JSON.stringify({"device_out":[],"device_in":[]}));
+		fs.writeFileSync(__dirname+'/init.txt', "");
 	});
 
 });

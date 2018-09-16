@@ -17,6 +17,12 @@ $(function () {
 		buildList('.devices-in',data.device_in);
 		initList();
 	});
+	
+	$(".reset-btn").click(reset);
+	
+	if(window.orientation == 0 || window.orientation == 180){
+		alert("Rotate your device to best experience!");
+	}
 
 });
 
@@ -35,7 +41,11 @@ function initList(){
     
 	var options = { 
 		group: "devices",
-		onEnd: function (evt) {
+		onStart: function (e){
+			$(".wrapper").addClass("no-scroll");	
+		},
+		onEnd: function (e) {
+			$(".wrapper").removeClass("no-scroll");	
 			sendData(); 
 		}
 	};
@@ -51,17 +61,19 @@ function sendData(){
     var data = [];
     var currentState = {device_out: [], device_in: []};
     
-    $(".devices-in li.list-group-item").each(function(){ //ottimizzare ed evitare la connessione con lo stesso strumento
+    $(".devices-in li.list-group-item").each(function(){ 
         var device_in = this;
         if(device_in){
             
+            var device_in_id = $(device_in).attr('data-val')+"0";
             
         	$(".devices-out li.list-group-item").each(function(){
 	        	var device_out = this;
 
 	        	if(device_out){
-					
-		        	data.push("aconnect "+$(device_out).attr('data-val')+"0"+" "+$(device_in).attr('data-val')+"0");					        	
+		            var device_out_id = $(device_out).attr('data-val')+"0";
+		            if(device_in_id != device_out_id)
+		        		data.push("aconnect "+$(device_out).attr('data-val')+"0"+" "+$(device_in).attr('data-val')+"0");					        	
 	        	}
 	        	
         	});   			            
@@ -87,4 +99,9 @@ function sendData(){
     
     socket.emit("saveState", currentState);
 
+}
+
+function reset(){
+	$(".devices-in, .devices-out").empty();
+	socket.emit("resetConnections");
 }

@@ -9,6 +9,29 @@
         <script src="/static/script.js"></script>
         <style>
 
+			html,
+			body {
+			  	position: fixed;
+			  	overflow: hidden;
+			}
+			
+			.wrapper {
+				padding: 20px;
+				width: 100vw;
+				height: 100vh;
+				overflow-y: scroll;
+				-webkit-overflow-scrolling: touch;
+			}
+			
+			.no-scroll{
+				overflow-y: hidden;
+				-webkit-overflow-scrolling: inherit;				
+			}
+			
+			li:hover{
+				cursor: move;	
+			}
+			
 			ol.devices.devices-out, ol.devices.devices-in{
 				min-height:200px;
 				border-radius:3px;
@@ -24,10 +47,19 @@
 				background-color: #04e15c;
 				color: white;
 			}
+			
+			
         </style>
     </head>
     <body>
-        <div class="container-fluid text-center" style="padding:20px;">
+        <div class="container-fluid wrapper text-center">
+	        <div class="row">
+		        <div class="col-xs-6 text-left">
+		        	<button class="btn btn-warning btn-sm reset-btn">RESET</button>
+		        </div>
+		        <div class="col-xs-6">
+		        </div>
+	        </div>
 	        
 	        <div class="row" id="list-container">
 		        <div class="col-xs-4">
@@ -40,7 +72,10 @@
 		        </div>
 		        <div class="col-xs-4">
 			         <h4>RECEIVE</h4>
-					 <ol id="devices-in" class='devices devices-in list-group'></ol>     
+					 <ol id="devices-in" class='devices devices-in list-group'></ol>  
+					 <p class="text-right">
+					 	<small><a href="https://github.com/minux84/mipi" target="_blank">miPI</a></small>   
+					 </p>
 		        </div>		        
 	        </div>          
         </div>         
